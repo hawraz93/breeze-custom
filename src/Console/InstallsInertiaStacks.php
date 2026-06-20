@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Breeze\Console;
+namespace Hawraz\Breeze\Console;
 
 use Illuminate\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;

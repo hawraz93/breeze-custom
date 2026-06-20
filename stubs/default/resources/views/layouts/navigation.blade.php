@@ -19,8 +19,11 @@
             </div>
 
             <!-- Settings Dropdown -->
-            <div class="hidden sm:flex sm:items-center sm:ms-6">
-                <x-dropdown align="right" width="48">
+            <div class="hidden sm:flex sm:items-center sm:ms-6 gap-2">
+                <!-- Language Switcher -->
+                <x-language-switcher />
+
+                <x-dropdown align="{{ in_array(app()->getLocale(), ['ar', 'ku']) ? 'left' : 'right' }}" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
                             <div>{{ Auth::user()->name }}</div>
@@ -83,6 +86,15 @@
                 <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
+
+                <!-- Language Links (Mobile) -->
+                @foreach(['en' => 'English', 'ar' => 'العربية', 'ku' => 'کوردی'] as $locale => $label)
+                    @if($locale !== app()->getLocale())
+                        <x-responsive-nav-link :href="route('language.switch', $locale)">
+                            {{ $label }}
+                        </x-responsive-nav-link>
+                    @endif
+                @endforeach
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">

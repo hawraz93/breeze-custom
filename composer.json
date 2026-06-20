@@ -1,19 +1,22 @@
 {
-    "name": "laravel/breeze",
-    "description": "Minimal Laravel authentication scaffolding with Blade and Tailwind.",
+    "name": "hawraz/breeze",
+    "description": "Laravel authentication scaffolding with Blade, Tailwind, and Arabic/Kurdish RTL support.",
     "keywords": [
         "laravel",
-        "auth"
+        "auth",
+        "rtl",
+        "arabic",
+        "kurdish"
     ],
     "license": "MIT",
     "support": {
-        "issues": "https://github.com/laravel/breeze/issues",
-        "source": "https://github.com/laravel/breeze"
+        "issues": "https://github.com/hawraz/breeze/issues",
+        "source": "https://github.com/hawraz/breeze"
     },
     "authors": [
         {
-            "name": "Taylor Otwell",
-            "email": "taylor@laravel.com"
+            "name": "Hawraz",
+            "email": "hawrazn1@gmail.com"
         }
     ],
     "require": {
@@ -31,13 +34,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Laravel\\Breeze\\": "src/"
+            "Hawraz\\Breeze\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Laravel\\Breeze\\BreezeServiceProvider"
+                "Hawraz\\Breeze\\BreezeServiceProvider"
             ]
         }
     },

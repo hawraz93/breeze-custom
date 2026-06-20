@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Breeze\Console;
+namespace Hawraz\Breeze\Console;
 
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Foundation\Application;
@@ -55,6 +55,15 @@ trait InstallsBladeStack
         if (! $this->installTests()) {
             return 1;
         }
+
+        // Language files...
+        (new Filesystem)->ensureDirectoryExists(base_path('lang'));
+        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/default/lang', base_path('lang'));
+
+        // Middleware...
+        (new Filesystem)->ensureDirectoryExists(app_path('Http/Middleware'));
+        copy(__DIR__.'/../../stubs/default/app/Http/Middleware/SetLocale.php', app_path('Http/Middleware/SetLocale.php'));
+        $this->installMiddleware('\App\Http\Middleware\SetLocale::class');
 
         // Routes...
         copy(__DIR__.'/../../stubs/default/routes/web.php', base_path('routes/web.php'));
